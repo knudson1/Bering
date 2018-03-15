@@ -1,0 +1,15 @@
+Package: Bering
+Type: Package
+Title: Time-Series Analysis for Bering Sea Climate Data
+Version: 1.0
+Date: 2018-03-15
+Author: Christina Knudson, PhD
+Maintainer: "Christina Knudson, PhD" <knud8583@stthomas.edu>
+Description: Randomization-based hypothesis testing for time-series climate data. It was written to analyze data for a manuscript (currently under review) written by Karla Knudson,  Christina Ravelo, Ivano Aiello, Christina Knudson, Michelle Drake, and Tatsuhiko Sakamoto. If/when the manuscript is accepted for publication, the entire data set will be made available.
+License: GPL-2
+ByteCompile: TRUE
+Imports: stats
+Depends: R (>= 3.1.1)
+
+
+

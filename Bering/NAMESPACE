@@ -1,0 +1,14 @@
+
+
+export(assignlam)
+export(countGIG)
+export(lefttailtest)
+export(nswitches)
+export(onemeanRtest)
+export(peas)
+export(righttailtest)
+export(twotailtest)
+
+
+
+importFrom("stats", "rbinom")
