@@ -67,7 +67,7 @@ Detailed directions can be found online in many places, including [this source](
 
 # Examples
 
-Examples are provided in the [vignettes](./vignettes) folder. To see the results of the code are displayed in the pdf versions of the files.
+Examples are provided in the [vignettes](./vignettes) folder. The results of the code are displayed in the pdf versions of the files.
 
 # License
 
