@@ -8,6 +8,8 @@
 - [System Requirements](#system-requirements)
 - [Installation Guide](#installation-guide)
 - [Examples](#examples)
+- [License](#license)
+- [Pseudocode](#pseudocode)
 
 # Overview
 Welcome to the Bering repository, containing the production-ready version of the R package `Bering`. Using Monte Carlo and Markov chain Monte Carlo, this package conducts hypothesis tests for the time-series climate data presented by Karla Knudson,  Christina Ravelo, Ivano Aiello, Christina Knudson, Michelle Drake, and Tatsuhiko Sakamoto. 
@@ -64,4 +66,13 @@ Detailed directions can be found online in many places, including [this source](
 
 
 # Examples
-Examples are provided in the [vignettes](./vignettes) folder.
+
+Examples are provided in the [vignettes](./vignettes) folder. To see the results of the code are displayed in the pdf versions of the files.
+
+# License
+
+The license for `Bering` is [GPL-3](https://www.gnu.org/licenses/gpl-3.0.en.html).
+
+# Pseudocode
+
+Pseudocode is included in each .R file in [R](./Bering/R).
