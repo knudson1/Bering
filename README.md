@@ -31,7 +31,7 @@ The `Bering` package requires no special hardware.  Because the `Bering` package
 
 ## OS Requirements
 
-The `Bering` package was developed and tested on *Linux* operating systems (Ubuntu, to be specific) using version 3.4.3 of R. The  package should be compatible with Windows, Mac, and Linux operating systems.
+The `Bering` package was developed and tested on Ubuntu using version 3.4.3 of R. Additional testing was performed using Windows using version 3.4.3 of R. The package should be compatible with Windows, Mac, and Linux operating systems.
 
 
 
@@ -47,7 +47,15 @@ Before installing the `Bering` package, users should have downloaded and install
 
 
 
-This package will soon be available on [CRAN](https://cran.r-project.org/). In the meantime, the `devtools` package enables users to  install packages directly from GitHub. Detailed directions can be found online in many places, including [this source](http://kbroman.org/pkg_primer/pages/github.html).
+This package will soon be available on [CRAN](https://cran.r-project.org/). In the meantime, the `devtools` package enables users to  install packages directly from GitHub. Once `devtools` is installed, type the following:
+
+```
+library(devtools)
+install_github("knudson1/Bering/Bering")
+library(Bering)
+```
+
+Detailed directions can be found online in many places, including [this source](http://kbroman.org/pkg_primer/pages/github.html).
 
 
 
