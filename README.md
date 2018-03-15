@@ -64,4 +64,4 @@ Detailed directions can be found online in many places, including [this source](
 
 
 # Examples
-Examples are provided in the [documentation](./Bering/man).
+Examples are provided in the [vignettes](./vignettes) folder.
