@@ -9,55 +9,77 @@ output: pdf_document
 
 This vignette will demonstrate the process and functions used to answer the following research question: Are laminated intervals primarily associated with high sea levels? 
 
-In this vignette, we first cover the hypothesis, the test statistic used, and the intuition behind the test. Next, we demonstrate the `Bering` functions necessary to conduct the test. Then, we demonstrate how to use the test output to visualize our results. Finally, we discuss the computational cost of this procedure.
+In this vignette, we first cover the hypotheses, the test statistic, and the intuition behind the test. Next, we demonstrate the `Bering` functions necessary to conduct the test. Then, we demonstrate visualizing the results using the `Bering` output. Finally, we discuss the computational cost of this procedure.
 
 # Hypotheses, test statistics, and intuition
 
-The null hypothesis is that sea levels and laminations are unrelated and the alternative hypothesisis that high sea levels are associated with laminations. 
+The null hypothesis is that sea levels and laminations are unrelated; the mean sea level during laminated intervals is similar to the mean sea level overall. The alternative hypothesisis that the  sea level is relatively high during laminated intervals. 
 
-To answer this research question, we select the mean sea level during laminations as our test statistic. We compare this test statistic to 10000 test statistics that are simulated under the null hypothesis. These test statistics are simulated using Monte Carlo. The sea levels and dates of measurements remain unchanged, but we randomly assign each measurement to one of two states (laminated or non-laminated) using a Markov chain with empirical transition probabilities.
+We select the mean sea level during laminations as our test statistic. Using Monte Carlo, we simulate 10000 data-sets and test statistics under the null hypothesis. To simulate each data-set, we randomly assign each measurement to one of two states (laminated or non-laminated) using a Markov chain with empirical transition probabilities calculated using the original data set.
 
 If the test statistic is relatively large compared to the distribution of simulated test statistics, we will reject the null hypothesis and conclude that the mean sea level  is significantly higher during laminations. In particular, our p-value is the proportion of test statistics greater than or equal to the original data's test statistic.
 
-We present this method using simulated laminations, but we will update the `Bering` package and this vignette to include the true data if/when our manuscript is published.
+This vignette uses `mocksea`, which has real relative sea levels, real measurement ages, and and simulated laminations. We will update the `Bering` package and this vignette to include the true lamination data if/when our manuscript is published.
 
 
-# Conducting the test
+# Exploring the data
 
-Begin by invoking the package and the sea levels data. 
+
+
+Begin by invoking the `Bering` package and `mocksea` data. 
+
 
 ```{r}
 library(Bering)
 data(mocksea)
 ```
 
-At this point, I highly recommend you conduct exploratory data analysis to acquaint yourself with the data. 
+At this point, I highly recommend conducting exploratory data analysis to become acquainted with the data. In particular, I recommend using the `summary` command (in base R) to understand the data.
 
-After completing your exploratory data analysis, ensure that the measurements are in order by age. The code below demonstrates one way to perform this check. TRUE indicates the measurements are indeed in order. 
+```{r}
+summary(mocksea)
+```
+
+Our data frame `mocksea` has three variables: `age`, `sealevel`, and `lam`. Information on these variables can be found by typing the following into the `R` console:
+```{r, eval = FALSE}
+?mocksea
+```
+
+
+After completing  exploratory data analysis, we ensure that the measurements are in order by age. The code below demonstrates one way to perform this check. TRUE indicates the measurements are indeed in order. 
 ```{r}
 with(mocksea, sum(age == sort(age)) == length(age))
 ```
 
-Next, calculate the empirical probability of a laminated measurement following a nonlaminated measurement and the empirical probability of a laminated measurement following another laminated measurement. We use the `peas` command from `Bering`. The only argument for this function is the vector of laminated states.
+
+
+# Conducting the test
+
+To prepare for the hypothesis test, we calculate two empirical probabilities:
+
+- the empirical probability of a laminated measurement following a nonlaminated measurement 
+- the empirical probability of a laminated measurement following another laminated measurement. 
+
+The `peas` function from `Bering` calculates these probabilities using  a single input: the vector indicating which measurements are laminated.
 ```{r}
 mypea <- peas(mocksea$lam)
 (pswitchL <- mypea$pswitchL)
 (pstayL <- mypea$pstayL)
 ```
 
-Now calculate the test statistic (the mean sea level during laminated intervals) of the original data. You can calculate this in many different ways, but here we demonstrate the calculation using indexing.
+Next, we calculate the test statistic (the mean sea level during laminated intervals) of the original data. The code below demonstrates one way to calculate this statistic.
 ```{r}
 teststat <- with(mocksea, mean(sealevel[lam==1]))
 ```
 
-Finally,  calculate the p-value using the `onemeanRtest` function from `Bering`. The first argument is the vector of sea levels, the second is the test statistic, the third is the empirical probability of a laminated measurement following a nonlaminated measurement,  the fourth is the empirical probability of a laminated measurement following another laminated measurement, and the fifth is the Monte Carlo sample size. The Monte Carlo sample size represents the number of test statistics that will be simulated under the null hypothesis (no association between sea levels and laminations).
-```{r}
+Finally, we calculate the p-value using the `onemeanRtest` function from `Bering`. The first argument is the vector of sea levels, the second is the test statistic, the third is the empirical probability of a laminated measurement following a nonlaminated measurement,  the fourth is the empirical probability of a laminated measurement following another laminated measurement, and the fifth is the Monte Carlo sample size. The Monte Carlo sample size represents the number of test statistics that will be simulated under the null hypothesis (no association between sea levels and laminations).
+```{r, cache = TRUE}
 m <- 10^4
 out <- onemeanRtest(mocksea$sealevel, teststat, pswitchL, pstayL,  m)
 out$pvalue
 ```
 
-Because the sea level's lamination data are simulated, the p-value from this test is quite large and we do not reject our null hypothesis. According to this data set, the mean sea level is not significantly higher during laminations than it would be if sea levels and laminations were truly unrelated. 
+Because the p-value from this test (using mock data) is quite large, we do not reject our null hypothesis. In other words, the mean sea level is not significantly higher during laminations than it would be if sea levels and laminations were truly related. 
 
 # Visualizing the results
 
@@ -66,6 +88,7 @@ To better understand our results, we can visualize the simulated means and  comp
 hist(out$lammean, main=NULL, xlab="mean relative sea level during laminations")
 abline(v=teststat, lty=2)
 ```
+
 This plot makes it clear that our original data's test statistic is not at all unusual compared to the test statistics simulated under the hypothesis that sea levels and laminations are unrelated.
 
 # Computational cost
