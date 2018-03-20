@@ -13,7 +13,7 @@ In this vignette, we first cover the hypotheses, the test statistic, and the int
 
 # Hypotheses, test statistics, and intuition
 
-The null hypothesis is that sea levels and laminations are unrelated; the mean sea level during laminated intervals is similar to the mean sea level overall. The alternative hypothesisis that the  sea level is relatively high during laminated intervals. 
+The null hypothesis is that sea levels and laminations are unrelated; the mean sea level during laminated intervals is similar to the mean sea level overall. The alternative hypothesisis is that the  sea level is relatively high during laminated intervals. 
 
 We select the mean sea level during laminations as our test statistic. Using Monte Carlo, we simulate 10000 data-sets and test statistics under the null hypothesis. To simulate each data-set, we randomly assign each measurement to one of two states (laminated or non-laminated) using a Markov chain with empirical transition probabilities calculated using the original data set.
 
@@ -93,5 +93,5 @@ This plot makes it clear that our original data's test statistic is not at all u
 
 # Computational cost
 
-Compiling this vignette on a 'normal' computer (Windows 10 with 8 GB of RAM) took about 34 seconds. Therefore, running all the `R` code in this vignette should take less than 34 seconds.
+Compiling this vignette on a 'normal' computer (Windows 10 with 8 GB of RAM) took about 34 seconds. 
 
