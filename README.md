@@ -75,4 +75,4 @@ The license for `Bering` is [GPL-3](https://www.gnu.org/licenses/gpl-3.0.en.html
 
 # Pseudocode
 
-Pseudocode is included in each .R file in [R](./Bering/R).
+Pseudocode is included in each .R file in [R](./Bering/R). A detailed description of the code's functionality is also in the methods section of the manuscript (under review).
