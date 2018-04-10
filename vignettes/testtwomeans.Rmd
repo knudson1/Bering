@@ -77,7 +77,7 @@ out <- righttailtest(mockdata$wtN, teststat, pswitchL, pstayL, m = 10^4)
 out$pvalue
 
 ```
-Because the p-value from this test (using mock data) is quite large, we do not reject our null hypothesis. In other words, the mean weight percent nitrogen is not significantly higher during laminated intervals. 
+Because the p-value from this test (using mock data) is quite large, we do not reject our null hypothesis. In other words, the mean weight percent nitrogen is not significantly higher during laminated intervals. Due to the nature of the mock data, this is not surprising.
 
 
 # Visualizing the results
@@ -89,7 +89,7 @@ hist(out$distrib, main = NULL,
 abline(v = teststat, lty = 2)
 ```
 
-This plot makes it clear that our original data's test statistic is not at all unusual compared to the test statistics simulated under the hypothesis that sea levels and laminations are unrelated.
+This plot makes it clear that our original data's test statistic is not at all unusual compared to the test statistics simulated under the hypothesis that sea levels and laminations are unrelated. Due to the nature of the mock data, this is not surprising.
 
 # Computational cost
 

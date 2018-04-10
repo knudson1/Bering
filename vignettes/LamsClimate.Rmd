@@ -150,9 +150,9 @@ Because the p-values are large (.193 and .467), we do not reject the null hypoth
 
 # Visualizing the results
 
-To better understand our results, we can visualize the simulated test statistics and  compare them to the original data's test statistic. We first create a histogram using the simulated test statistics  and then we draw a vertical dashed line at our original data's test statistic. Because we conducted two tests (one for glacial, the other for interglacial), we produce two plots.
+To better understand the results from our mock analysis, we can visualize the simulated test statistics and  compare them to the original data's test statistic. We first create a histogram using the simulated test statistics  and then we draw a vertical dashed line at our original data's test statistic. Because we conducted two tests (one for glacial, the other for interglacial), we produce two plots.
 
-The following plot displays  the sampling distribution (under the null hypothesis) for the proportion of lamnated intervals containing a glacial measurement. The dotted line shows the test statistic from our original data set. You can see our test statistic is not unusual extreme compared to those built under the null hypothesis (no relationship between climate and laminations).
+The following plot displays  the sampling distribution (under the null hypothesis) for the proportion of lamnated intervals containing a glacial measurement. The dotted line shows the test statistic from our original data set. You can see our test statistic is not unusual extreme compared to those built under the null hypothesis (no relationship between climate and laminations). Due to the nature of the mock data, this is not surprising.
 
 ```{r}
 hist(Gdistrib, main=NULL, xlab ="proportion of laminations with a glacial measurement")

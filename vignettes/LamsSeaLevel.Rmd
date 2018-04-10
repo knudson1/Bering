@@ -83,13 +83,13 @@ Because the p-value from this test (using mock data) is quite large, we do not r
 
 # Visualizing the results
 
-To better understand our results, we can visualize the simulated means and  compare them to the original data's mean. We first create a histogram using the simulated means (returned by our test) and then we draw a vertical dashed line at our original data's mean.
+To better understand our results, we can visualize the simulated means and  compare them to the original (mock) data's mean. We first create a histogram using the simulated means (returned by our test) and then we draw a vertical dashed line at our original (mock) data's mean.
 ```{r}
 hist(out$lammean, main=NULL, xlab="mean relative sea level during laminations")
 abline(v=teststat, lty=2)
 ```
 
-This plot makes it clear that our original data's test statistic is not at all unusual compared to the test statistics simulated under the hypothesis that sea levels and laminations are unrelated.
+This plot makes it clear that our original data's test statistic is not at all unusual compared to the test statistics simulated under the hypothesis that sea levels and laminations are unrelated. Due to the nature of the mock data, this is not surprising.
 
 # Computational cost
 
